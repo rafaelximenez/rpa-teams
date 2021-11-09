@@ -1,5 +1,9 @@
 import pyautogui
+import random
 import time
+
+from messages import messages
+
 
 def select_component(file_path, sleep_seconds):
     try:
@@ -12,21 +16,21 @@ def select_component(file_path, sleep_seconds):
     except:
         print(f'Falha ao encontrar o elemento {file_path}')
     
+if __name__ == '__main__':
+    button_teams = select_component('images/teamsCloseIco.PNG', 5)
+    button_teams = select_component('images/teamsOpenIco.PNG', 1)
 
-button_teams = select_component('images/teamsCloseIco.PNG', 5)
-button_teams = select_component('images/teamsOpenIco.PNG', 1)
 
+    search_bar = select_component('images/searchBar.png', 1)
 
-search_bar = select_component('images/searchBar.png', 1)
+    text_search = 'Erick Castorino e Vinicius'
+    pyautogui.write(text_search)
 
-text_search = 'Erick Castorino e Vinicius'
-pyautogui.write(text_search)
+    time.sleep(1)
 
-time.sleep(1)
+    selected_chat = select_component('images/selectedChat.png', 1)
+    message_bar = select_component('images/messageBar.png', 1)
 
-selected_chat = select_component('images/selectedChat.png', 1)
-message_bar = select_component('images/messageBar.png', 1)
-
-message = '.'
-pyautogui.write(message)
-#pyautogui.press('enter')
+    message = random.choice(messages)
+    pyautogui.write(message)
+    #pyautogui.press('enter')
